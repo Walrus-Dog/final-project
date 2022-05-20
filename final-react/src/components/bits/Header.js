@@ -7,7 +7,7 @@ export default function Header() {
                 <div className="row">
                     <div className="col-md-5">
                         <h1 className="headertext container">
-                            <a href="#">
+                            <a href="/">
                                 <span className="big-logo">WalDog</span>
                                 <span className="small-logo sm-d-none">Shop</span>
                             </a>
@@ -27,10 +27,10 @@ export default function Header() {
                                                 <input className="search-input" id="searchInout" name="search" placeholder="Search..." type="text" autoComplete="off" />
                                         </li>
                                         <li className="shop-list-item">
-                                            <a href="./allProdsPage.html">All Products</a>
+                                            <a href="/Instock">All Products</a>
                                         </li>
                                         <li className="shop-list-item">
-                                            <a href="./comingSoon.html">Coming Soon</a>
+                                            <a href="/ComingSoon">Coming Soon</a>
                                         </li>
                                     
                                 </div>
@@ -38,13 +38,10 @@ export default function Header() {
                                     <h3 className="nav-title">About</h3>
                                     <ul className="about-list">
                                         <li className="aboutlist-item">
-                                            <a href="./info.html">Info</a>
+                                            <a href="/Info">Info</a>
                                         </li>
                                         <li className="aboutlist-item">
-                                            <a href="./contact.html">Contact</a>
-                                        </li>
-                                        <li className="aboutlist-item">
-                                            <a href="./index.html">Back to Home</a>
+                                            <a href="/">Back to Home</a>
                                         </li>
                                     </ul>
                                 </div>

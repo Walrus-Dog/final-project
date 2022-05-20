@@ -135,6 +135,7 @@ li {
     border-radius: 2%;
     color: #D9CECA;
     margin-left: 2%;
+    margin-bottom: 4%;
 }
 
 .card-title {
@@ -157,6 +158,32 @@ li {
     border: none;
     background-color: #5CFFFF;
     color: #201c19;
+}
+
+.info-img {
+    border: 2px solid #FF5C5B;
+    border-radius: 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.info-area {
+    margin-bottom: 18%;
+}
+
+.info-header {
+    border-bottom: #201c19 5px solid;
+    color: #D9CECA;
+    padding-bottom: 4px;
+}
+
+.info-text {
+    color: #D9CECA;
+}
+
+.info-span {
+    color: #FF5C5B;
+    font-size: 1.3rem;
 }
 
 /* start footer */

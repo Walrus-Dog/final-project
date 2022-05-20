@@ -82,6 +82,24 @@ const isDao = {
                 }
             }
         )
+    },
+
+    findById: (res, table, id) => {
+        con.query(
+            `SELECT * FROM ${table} WHERE is_id=${id}`,
+            [id],
+            (error, rows) => {
+                if (!error) {
+                    if(rows.length === 1) {
+                        res.json(...rows)
+                    } else {
+                        res.json(rows)
+                    }
+                } else { 
+                    console.log("Dao Common Error", error)
+                }
+            }
+        )
     }
 }
 
