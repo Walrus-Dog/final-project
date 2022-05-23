@@ -6,11 +6,9 @@ import Footer from "./components/bits/Footer";
 import Main from "./components/pages/Main";
 import ComingSoon from "./components/pages/ComingSoon";
 import ComingSoonSingle from "./components/pages/ComingSoonSingle";
-import CustomerStories from "./components/pages/CustomerStories";
 import InStock from "./components/pages/InStock";
 import InStockSingle from "./components/pages/InStockSingle";
 import Info from "./components/pages/Info";
-import SingleProd from "./components/pages/InStockSingle";
 
 function App() {
   const [inStockData, setInStockData] = React.useState([]);

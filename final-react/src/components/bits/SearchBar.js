@@ -5,6 +5,7 @@ import axios from "axios";
 export default function SearchBar({ placeholder, data}) {
 
     const [inStockData, setInStockData] = React.useState([]);
+    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/api/instock`)
@@ -12,11 +13,11 @@ export default function SearchBar({ placeholder, data}) {
     }, [])
 
     const handleFilter = (event) => {
-        const searchWord = event.target.value
+        const searchWord = event.target.value;
         const newFilter = inStockData.filter((value) => {
-            return value.name.includes(searchWord);
+            return value.is_name.toLowerCase().includes(searchWord.toLowerCase());
         });
-        setInStockData(newFilter);
+        setFilteredData(newFilter);
     }
 
     return (
@@ -25,9 +26,9 @@ export default function SearchBar({ placeholder, data}) {
                 <input type="hidden" name="utf8" value="✓" />
                 <label className="sr-only" htmlFor="search">Search products</label>
                 <input className="search-input" id="searchInput" name="search" placeholder={placeholder} type="text" autoComplete="on" onChange={handleFilter} />
-                {inStockData.length != 0 && (
+                {filteredData.length != 0 && (
                     <div className="search-result">
-                        {inStockData.map((el, key) => {
+                        {filteredData.map((el, key) => {
                             return <a className="data-item" href={`/InStockSingle/${el.id}`}>
                                 <p>{el.is_name}</p>
                             </a>
