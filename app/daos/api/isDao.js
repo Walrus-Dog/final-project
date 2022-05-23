@@ -35,7 +35,7 @@ const isDao = {
     },
 
     update: (req, res) => {
-        if(isNaN(req.paramns.id)) {
+        if(isNaN(req.params.id)) {
             res.json({
                 "error": true,
                 "message": "Is not a number!"
@@ -51,7 +51,7 @@ const isDao = {
 
             con.execute(
                 `UPDATE InStock SET ${fields.join("=?,")}=? WHERE InStock_id=?`,
-                [...values, req.paramns.id],
+                [...values, req.params.id],
                 (error, dbres) => {
                     if(!error) {
                         if(dbres.length === 1) {
@@ -66,40 +66,6 @@ const isDao = {
                 }
             )
         }
-    },
-
-    findByName: (req, res) => {
-        con.execute(
-            "SELECT * FROM InStock WHERE is_name=?",
-            [is_name],
-            (error, rows) => {
-                if(!error) {
-                    if(rows.length === 1) {
-                        res.json(...rows)
-                    } else {
-                        res.json(rows)
-                    }
-                }
-            }
-        )
-    },
-
-    findById: (res, table, id) => {
-        con.query(
-            `SELECT * FROM ${table} WHERE is_id=${id}`,
-            [id],
-            (error, rows) => {
-                if (!error) {
-                    if(rows.length === 1) {
-                        res.json(...rows)
-                    } else {
-                        res.json(rows)
-                    }
-                } else { 
-                    console.log("Dao Common Error", error)
-                }
-            }
-        )
     }
 }
 

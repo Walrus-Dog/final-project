@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Main() {
-
+    // instock random
     const [inStock, setInStock] = useState([])
 
     useEffect(() => {
@@ -18,22 +18,73 @@ export default function Main() {
     for (let i= 0; i < 4; i++) {
         inStockArray.push(Math.ceil(Math.random() * 20))
     }
-    console.log(inStockArray)
     let inStockItems = inStock.map((el, i) =>{
         return (
             <div id={i} key={i} className="bs-card card" style={{ width: "18rem" }}>
-                <img src="..." className="card-img-top" alt="..." />
+                <img src={el.is_img} className="card-img-top img-fluid" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{el.is_name}</h5>
                         <p className="card-text">{el.is_desc}</p>
                         <p className="casrd-text">{el.is_price}</p>
-                        <Link to={`/InStockSingle/${el.is_id}`} className="btn btn-primary bs-button">Buy Now!</Link>
+                        <Link to={`/InStockSingle/${el.id}`} className="btn btn-primary bs-button">Buy Now!</Link>
                     </div>
                 </div>
         )
     }).filter(el => inStockArray.includes(el.props.id))
 
-    //inStockItems.forEach(el => console.log(el))
+    // customer stories random
+    const [custStories, setCustStories] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/stories")
+        .then(res => {
+            setCustStories(res.data)
+        })
+    }, [])
+
+    let custStoriesArray = []
+    for (let i= 0; i < 4; i++) {
+        custStoriesArray.push(Math.ceil(Math.random() * 10))
+    }
+    let custStoriesItems = custStories.map((el, i) =>{
+        return (
+            <div id={i} key={i} className="bs-card card" style={{ width: "18rem" }}>
+                <img src={el.cust_img} className="card-img-top img-fluid" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{el.cust_name}</h5>
+                        <p className="card-text">{el.cust_test}</p>
+                    </div>
+                </div>
+        )
+    }).filter(el => custStoriesArray.includes(el.props.id))
+
+    // coming soon random
+    const [comingSoon, setComingSoon] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/comingsoon")
+        .then(res => {
+            setComingSoon(res.data)
+        })
+    }, [])
+
+    let comingSoonArray = []
+    for (let i= 0; i < 4; i++) {
+        comingSoonArray.push(Math.ceil(Math.random() * 10))
+    }
+    let comingSoonItems = comingSoon.map((el, i) =>{
+        return (
+            <div id={i} key={i} className="bs-card card" style={{ width: "18rem" }}>
+                <img src={el.cs_img} className="card-img-top img-fluid" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{el.cs_name}</h5>
+                        <p className="card-text">{el.cs_desc}</p>
+                        <p className="casrd-text">{el.cs_price}</p>
+                        <Link to={`/ComingSoonSingle/${el.id}`} className="btn btn-primary bs-button">Coming Soon</Link>
+                    </div>
+                </div>
+        )
+    }).filter(el => comingSoonArray.includes(el.props.id))
 
     return (
         <main id="main" className="main">
@@ -50,30 +101,7 @@ export default function Main() {
                 <h2 className="main-header">
                     Customer Stoires
                 </h2>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
+                {custStoriesItems}
             </div>
         </section>
         <section className="coming-soon container">
@@ -81,38 +109,7 @@ export default function Main() {
                 <h2 className="main-header">
                     Items Coming Soon!
                 </h2>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary bs-button">Go somewhere</a>
-                    </div>
-                </div>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary bs-button">Go somewhere</a>
-                    </div>
-                </div>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary bs-button">Go somewhere</a>
-                    </div>
-                </div>
-                <div className="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="btn btn-primary bs-button">Go somewhere</a>
-                    </div>
-                </div>
+                {comingSoonItems}
             </div>
         </section>
     </main>

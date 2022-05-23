@@ -61,27 +61,11 @@ const csDao = {
                         }
                     } else {
                         res.send("Error Updating")
-                        console.log("Coming Soon Dao Error", error)
+                        console.log("ComingSoon Dao Error", error)
                     }
                 }
             )
         }
-    },
-
-    findByName: (req, res) => {
-        con.execute(
-            "SELECT * FROM ComingSoon WHERE cs_name=?",
-            [cs_name],
-            (error, rows) => {
-                if(!error) {
-                    if(rows.length === 1) {
-                        res.json(...rows)
-                    } else {
-                        res.json(rows)
-                    }
-                }
-            }
-        )
     }
 }
 

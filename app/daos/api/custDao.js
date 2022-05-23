@@ -66,22 +66,6 @@ const custDao = {
                 }
             )
         }
-    },
-
-    findByName: (req, res) => {
-        con.execute(
-            "SELECT * FROM CustomerStories WHERE name=?",
-            [cust_name],
-            (error, rows) => {
-                if(!error) {
-                    if(rows.length === 1) {
-                        res.json(...rows)
-                    } else {
-                        res.json(rows)
-                    }
-                }
-            }
-        )
     }
 }
 

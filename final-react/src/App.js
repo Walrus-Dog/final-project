@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header data={inStockData} />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/InStock" element={<InStock props={inStockData}/>} />

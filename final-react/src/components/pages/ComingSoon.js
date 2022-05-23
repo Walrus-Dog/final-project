@@ -1,23 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 export default function ComingSoon(props) {
     const items = props.props;
 
     const comingSoonElements = items.map(item => {
         return (
-            <section class="coming-soon container">
-            <div class="row">
+            <div className="col-md-3">
                 <div class="bs-card card" style={{ width: "18rem" }}>
-                    <img src="..." class="card-img-top" alt="..." />
+                    <img src={item.cs_img} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">{item.cs_name}</h5>
                         <p class="card-text">{item.cs_desc}</p>
                         <p className="card-text">{item.cs_price}</p>
-                        <a href="#" class="btn btn-primary bs-button">Take a look!</a>
+                        <Link to={`/ComingSoonSingle/${item.id}`} className="btn btn-primary bs-button">Coming Soon</Link>
                     </div>
                 </div>
             </div>
-        </section>
         )
     })
 

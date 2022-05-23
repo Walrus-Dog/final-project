@@ -1,6 +1,10 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import SearchBar from "./SearchBar";
+import axios from "axios";
 
 export default function Header() {
+
     return (
         <header id="header" className="header">
             <div className="container">
@@ -21,10 +25,7 @@ export default function Header() {
                                     <h3 className="nav-title">Shop</h3>
                                     <ul className="shop-list" id="shopList" />
                                         <li>
-                                            <form action="./products" className="shop-list-search-form" name="search" method="get" acceptCharset="utf8" id="shopListSearchForm" />
-                                                <input type="hidden" name="utf8" value="✓" />
-                                                <label className="sr-only" htmlFor="search">Search products</label>
-                                                <input className="search-input" id="searchInout" name="search" placeholder="Search..." type="text" autoComplete="off" />
+                                            <SearchBar placeholder="Search..." />
                                         </li>
                                         <li className="shop-list-item">
                                             <a href="/Instock">All Products</a>
