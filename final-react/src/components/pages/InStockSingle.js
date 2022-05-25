@@ -16,10 +16,10 @@ export default function InStockSingle() {
         <div className="container">
             <div className="row">
                 <div className="col-md-3">
-                    <img src={isSingleItem.is_img} className="card-img-top img-fluid" alt="..." />
+                    <img src={isSingleItem.is_img} className="single-img img-fluid" alt="..." />
                 </div>
                 <div className="col-md-9">
-                    <div className="bs-card card" style={{ width: "18rem" }}>
+                    <div className="bs-card-single card" style={{ width: "40rem" }}>
                         <div className="card-body">
                             <h5 className="card-title">{isSingleItem.is_name}</h5>
                             <p className="card-text">{isSingleItem.is_desc}</p>
