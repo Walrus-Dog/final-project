@@ -23,7 +23,6 @@ export default function SearchBar({ placeholder, data}) {
     return (
         <div className="search-div">
             <form action="./products" className="shop-list-search-form" name="search" method="get" acceptCharset="utf8" id="shopListSearchForm">
-                <input type="hidden" name="utf8" value="✓" />
                 <label className="sr-only" htmlFor="search">Search products</label>
                 <input className="search-input" id="searchInput" name="search" placeholder={placeholder} type="text" autoComplete="on" onChange={handleFilter} />
                 {filteredData.length != 0 && (
